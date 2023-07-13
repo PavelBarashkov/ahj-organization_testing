@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 import { validCard } from './validCard';
 import data from '../components/numberCardList/namberCardList.json';
-import { cardDefinition } from './CardDefinition';
+import { cardDefinition } from './cardDefinition';
 
 export class InnFormWidget {
   constructor(parentEl) {
