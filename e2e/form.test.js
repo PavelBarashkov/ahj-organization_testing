@@ -1,22 +1,39 @@
 /* eslint-disable no-undef */
 import puppeteer from 'puppeteer';
+import { fork } from 'child_process';
 
-describe('valid form ', () => {
+describe('Credit Card Validator form', () => {
   let browser;
   let page;
+  let server;
+  const baseUrl = 'http://localhost:9000';
 
-  beforeEach(async () => {
-    browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 100,
-      devtools: true,
+  beforeAll(async () => {
+    server = fork(`${__dirname}/e2e.server.js`);
+    await new Promise((resolve, reject) => {
+      server.on('error', reject);
+      server.on('message', (message) => {
+        if (message === 'ok') {
+          resolve();
+        }
+      });
     });
 
+    browser = await puppeteer.launch({
+      // headless: false, // show gui
+      // slowMo: 50,
+      // devtools: true, // show devTools
+    });
     page = await browser.newPage();
   });
 
+  afterAll(async () => {
+    await browser.close();
+    server.kill();
+  });
+
   test('form should on page start', async () => {
-    await page.goto('http://localhost:9000');
+    await page.goto(baseUrl);
 
     await page.waitForSelector('.container-card');
   });

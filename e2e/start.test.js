@@ -1,27 +1,14 @@
-/* eslint-disable no-undef */
-import puppeteer from 'puppeteer';
+/* eslint-disable import/no-extraneous-dependencies */
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('../webpack.dev');
 
-describe('Page start', () => {
-  let browser;
-  let page;
-
-  beforeEach(async () => {
-    browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 100,
-      devtools: true,
-    });
-
-    page = await browser.newPage();
-  });
-
-  test('test', async () => {
-    await page.goto('http://localhost:9000');
-
-    await page.waitForSelector('body');
-  });
-
-  afterEach(async () => {
-    await browser.close();
-  });
+const server = new WebpackDevServer(webpack(config), {});
+server.listen(9000, 'localhost', (err) => {
+  if (err) {
+    return;
+  }
+  if (process.send) {
+    process.send('ok');
+  }
 });
