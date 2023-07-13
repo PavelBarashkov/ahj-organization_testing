@@ -1,0 +1,60 @@
+.container-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    max-width: 310px
+}
+
+.cards {
+    display: flex;
+}
+
+.card {
+    width: 50px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 -25px;
+}
+
+.Diners {
+    background-image: url('../assets/img/card-diners.png');
+}
+
+.Discover {
+    background-image: url('../assets/img/card-discover.png');
+}
+
+.Jcb {
+    background-image: url('../assets/img/card-jcb.png');
+}
+
+.Mastercard {
+    background-image: url('../assets/img/card-mastercard.png');
+}
+
+.Mir {
+    background-image: url('../assets/img/card-mir.png');
+}
+
+.Visa {
+    background-image: url('../assets/img/card-visa.png');
+}
+
+.active {
+    background-position: 0 0;
+}
+
+.valid {
+    border-color: green;
+    box-shadow: 0px 3px 10px green;
+}
+
+.invalid {
+    border-color: red;
+    box-shadow: 0px 3px 10px red;
+}
+
+.submit {
+    background-color: green;
+    color: white;
+}
