@@ -2,7 +2,7 @@
 import puppeteer from 'puppeteer';
 import { fork } from 'child_process';
 
-jest.setTimeout(100000);
+jest.setTimeout(50000);
 describe('Credit Card Validator form', () => {
   let browser;
   let page;
@@ -10,7 +10,7 @@ describe('Credit Card Validator form', () => {
   const baseUrl = 'http://localhost:9000';
 
   beforeAll(async () => {
-    server = fork(`${__dirname}/e2e.server.js`);
+    server = fork(`${__dirname}/start.test.js`);
     await new Promise((resolve, reject) => {
       server.on('error', reject);
       server.on('message', (message) => {
@@ -54,6 +54,7 @@ describe('Credit Card Validator form', () => {
 
       await page.waitForSelector('.container-card .input.valid');
     },
+    15000,
   );
 
   test(
@@ -71,5 +72,6 @@ describe('Credit Card Validator form', () => {
 
       await page.waitForSelector('.container-card .input.invalid');
     },
+    15000,
   );
 });
