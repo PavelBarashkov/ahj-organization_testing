@@ -54,7 +54,6 @@ describe('Credit Card Validator form', () => {
 
       await page.waitForSelector('.container-card .input.valid');
     },
-    15000,
   );
 
   test(
@@ -72,6 +71,5 @@ describe('Credit Card Validator form', () => {
 
       await page.waitForSelector('.container-card .input.invalid');
     },
-    15000,
   );
 });
