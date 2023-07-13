@@ -75,6 +75,6 @@ describe('Credit Card Validator form', () => {
   );
 
   afterEach(async () => {
-    await browser.close();
+    await browser.kill();
   });
 });
