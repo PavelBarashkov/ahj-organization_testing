@@ -63,7 +63,6 @@ export class InnFormWidget {
     const { value } = this.input;
     this.cards.forEach((item) => item.classList.remove('active'));
     const nameCard = cardDefinition(Number(value), data);
-    console.log(nameCard);
     const targetElement = this.element.querySelector(`.${nameCard}`);
     if (targetElement === null) {
       this.cards.forEach((item) => item.classList.remove('active'));
