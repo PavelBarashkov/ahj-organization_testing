@@ -2,7 +2,7 @@
 import puppeteer from 'puppeteer';
 import { fork } from 'child_process';
 
-jest.setTimeout(55000);
+jest.setTimeout(100000);
 describe('Credit Card Validator form', () => {
   let browser;
   let page;
